@@ -48,7 +48,8 @@ app.post('/api/shorturl', validateUrl, (req, res) => {
   const shortUrl = shortid.generate();
 
   // Store the mapping in the in-memory database
-  urlDatabase[shortUrl] = new URL(url).origin;
+  urlDatabase[shortUrl] = new URL(url);
+  new URL(url).ori
 
   // Return the original and short URL in the response
   res.json({ original_url: urlDatabase[shortUrl], short_url: shortUrl });
